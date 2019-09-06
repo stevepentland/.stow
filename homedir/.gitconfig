@@ -1,0 +1,8 @@
+[user]
+	name = Steve Pentland
+	email = stevepentland@gmail.com
+	signingkey = 3742FA71B60E518C
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
