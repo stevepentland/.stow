@@ -1,9 +1,0 @@
-[Unit]
-Description=Timer to run restic unlock
-
-[Timer]
-OnCalendar=00/12:50:00
-Persistent=true
-
-[Install]
-WantedBy=timers.target

@@ -1,8 +1,0 @@
-[Unit]
-Description=Ensure that restic repository is unlocked
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/restic unlock
-
-# No install needed, running on a timer
