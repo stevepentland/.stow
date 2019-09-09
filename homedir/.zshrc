@@ -1,32 +1,55 @@
-# POWERLEVEL9K setup
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version rust_version go_version virtualenv newline)
+#-------------------------------Options------------------------------#
+
+#=============================Directories============================#
+setopt auto_pushd
+setopt pushd_ignore_dups
+
+#===============================History==============================#
+setopt append_history
+setopt hist_reduce_blanks
+
+#=============================Key Bindings===========================#
+bindkey "^[[1;5D" backward-word   #control left
+bindkey "^[[1;5C" forward-word        #control right
+
+#-------------------------POWERLEVEL9K setup-------------------------#
+POWERLEVEL9K_MODE="nerdfont-complete"
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰\uF460\uF460\uF460 "
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version rust_version go_version virtualenv)
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='172'
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='000'
 POWERLEVEL9K_VIRTUALENV_BACKGROUND='022'
 POWERLEVEL9K_VIRTUALENV_FOREGROUND='046'
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_GO_VERSION_FOREGROUND='000'
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_DELIMITER=..
 
-# Zplug!
-source ~/.zplug/init.zsh
+if [ -z "$MAKING_DEMO" ]; then
+	POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status battery time)
+else
+	POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+fi
 
-# Zplug plugins!
+#------------------------------Sources-------------------------------#
+source ~/.zplug/init.zsh
+source '/etc/profile'
+
+#-------------------------------Zplug--------------------------------#
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "pkulev/zsh-rustup-completion"
 zplug "DarrinTisdale/zsh-aliases-exa"
-# zplug "Tarrasch/zsh-bd", as:command
-
+zplug "zsh-users/zsh-autosuggestions", use:zsh-autosuggestions.plugin.zsh
+zplug "plugins/gitfast", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "b4b4r07/enhancd", use:init.sh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-
 zplug load
 
-# Aliases
+#-------------------------------Aliases------------------------------#
 alias cls='clear'
 alias code='code-insiders'
 alias cronlog='sudo cat /var/log/cron.log'
@@ -38,16 +61,8 @@ alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 alias vim='nvim'
 alias grep='rg'
-source '/etc/profile'
 
-
-if [ -z "$MAKING_DEMO" ]; then
-	POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status battery time)
-else
-	POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-fi
-
-# Various exports 
+#-------------------------------Exports------------------------------#
 export TERM="xterm-256color"
 export WORKON_HOME=~/envs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -70,21 +85,22 @@ doneDemo() {
 	source ~/.zshrc
 }
 
-# GPG SSH setup
+#--------------------------------GPG SSH-----------------------------#
 export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
 
-# Virtualenvwrapper
+#----------------------------Virtualenvwrapper-----------------------#
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 	source /usr/local/bin/virtualenvwrapper.sh
 elif [ -f /usr/bin/virtualenvwrapper.sh ]; then
 	source /usr/bin/virtualenvwrapper.sh
 fi
 
-# NVM
+#----------------------------------NVM-------------------------------#
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Editor, TODO: Expand to check whether nvim is installed
+#---------------------------------Editor-----------------------------#
+# TODO: Expand to check whether nvim is installed
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
