@@ -113,4 +113,5 @@ export NVM_DIR="$HOME/.nvm"
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
-
+#------------------------------Zstyle Changes------------------------#
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
