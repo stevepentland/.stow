@@ -18,6 +18,26 @@ setopt SHARE_HISTORY
 bindkey "^[[1;5D" backward-word # control left
 bindkey "^[[1;5C" forward-word  # control right
 bindkey "^ " autosuggest-accept	# accept suggestion with ctrl+space
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[5~" history-search-backward
+bindkey "\e[6~" history-search-forward
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" overwrite-mode
+bindkey "\e[5C" forward-word
+bindkey "\e[5D" backward-word
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\e[8~" end-of-line
+bindkey "\eOc" forward-word
+bindkey "\eOd" backward-word
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+
 
 #-------------------------POWERLEVEL9K setup-------------------------#
 POWERLEVEL9K_MODE="nerdfont-complete"
