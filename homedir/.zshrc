@@ -53,6 +53,7 @@ zplug "zsh-users/zsh-autosuggestions", use:zsh-autosuggestions.plugin.zsh
 zplug "plugins/gitfast", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "b4b4r07/enhancd", use:init.sh
+zplug "nocttuam/autodotenv"
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug load
 
