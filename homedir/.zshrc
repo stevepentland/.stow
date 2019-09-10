@@ -15,8 +15,9 @@ setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY
 
 #=============================Key Bindings===========================#
-bindkey "^[[1;5D" backward-word   #control left
-bindkey "^[[1;5C" forward-word        #control right
+bindkey "^[[1;5D" backward-word # control left
+bindkey "^[[1;5C" forward-word  # control right
+bindkey "^ " autosuggest-accept	# accept suggestion with ctrl+space
 
 #-------------------------POWERLEVEL9K setup-------------------------#
 POWERLEVEL9K_MODE="nerdfont-complete"
@@ -53,6 +54,8 @@ zplug "zsh-users/zsh-autosuggestions", use:zsh-autosuggestions.plugin.zsh
 zplug "zsh-users/zsh-completions", use:zsh-completions.plugin.zsh
 zplug "plugins/gitfast", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "nocttuam/autodotenv"
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
