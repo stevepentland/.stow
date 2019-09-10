@@ -1,3 +1,6 @@
+# shellcheck disable=SC2034
+# shellcheck disable=1091
+# shellcheck disable=1090
 #-------------------------------Options------------------------------#
 
 #=============================Directories============================#
@@ -5,8 +8,11 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 
 #===============================History==============================#
-setopt append_history
-setopt hist_reduce_blanks
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+setopt HIST_REDUCE_BLANKS
+setopt SHARE_HISTORY
 
 #=============================Key Bindings===========================#
 bindkey "^[[1;5D" backward-word   #control left
@@ -35,8 +41,9 @@ else
 fi
 
 #------------------------------Sources-------------------------------#
+# shellcheck source=/etc/profile
 source ~/.zplug/init.zsh
-source '/etc/profile'
+source /etc/profile
 
 #-------------------------------Zplug--------------------------------#
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
