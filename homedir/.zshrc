@@ -50,6 +50,7 @@ zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "pkulev/zsh-rustup-completion"
 zplug "DarrinTisdale/zsh-aliases-exa"
 zplug "zsh-users/zsh-autosuggestions", use:zsh-autosuggestions.plugin.zsh
+zplug "zsh-users/zsh-completions", use:zsh-completions.plugin.zsh
 zplug "plugins/gitfast", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "b4b4r07/enhancd", use:init.sh
