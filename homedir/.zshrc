@@ -1,6 +1,16 @@
 # shellcheck disable=SC2034
 # shellcheck disable=1091
 # shellcheck disable=1090
+
+#-------------------------------Exports------------------------------#
+export TERM="xterm-256color"
+export WORKON_HOME=~/envs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.bin
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/steve/.local/share/flatpak/exports/share
+
 #-------------------------------Options------------------------------#
 
 #=============================Directories============================#
@@ -95,16 +105,8 @@ alias paste='xclip -selection clipboard -o'
 alias vim='nvim'
 alias grep='rg'
 
-#-------------------------------Exports------------------------------#
-export TERM="xterm-256color"
-export WORKON_HOME=~/envs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.bin
-export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/steve/.local/share/flatpak/exports/share
 
-# Recording Functions for CLI
+#------------------------------Functions-----------------------------#
 makeDemo() {
 	if [ -z "${MAKING_DEMO}" ]; then
 		MAKING_DEMO=true
