@@ -78,6 +78,7 @@ zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "nocttuam/autodotenv"
+zplug 'mfaerevaag/wd', as:command, use:"wd.sh", hook-load:"wd() { . $ZPLUG_REPOS/mfaerevaag/wd/wd.sh }"
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug load
 
