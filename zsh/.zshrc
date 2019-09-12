@@ -104,7 +104,8 @@ alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 alias vim='nvim'
 alias grep='rg'
-
+alias python='python3'
+alias pip='pip3'
 
 #------------------------------Functions-----------------------------#
 makeDemo() {
