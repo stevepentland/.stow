@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 
 # Simple setup script to get everything bootstrapped
-PACKAGES=("git" "neovim" "zsh" "stow" "ripgrep" "exa" "restic" "xclip")
+PACKAGES=("neovim" "zsh" "stow" "ripgrep" "exa" "restic" "xclip" "curl")
 
-if [ -f /usr/bin/dnf ]; then
+if command -v dnf > /dev/null 2>&1; then
 	echo "Found dnf, assuming Fedora"
 	PACKAGES+=("bat")
 	sudo dnf install --assumeyes "${PACKAGES[@]}"
-elif [ -f /usr/bin/pacman ]; then
+elif command -v pacman > /dev/null 2>&1; then
 	echo "Found pacman, assuming Arch"
 	PACKAGES+=("bat")
 	sudo pacman -S --noconfirm "${PACKAGES[@]}"
-elif [ -f /usr/bin/apt ]; then
+elif command -v apt > /dev/null 2>&1; then
 	echo "Found apt, assuming Ubuntu"
+	if command -v mawk > /dev/null 2>&1; then
+		sudo apt-get install -y gawk
+		sudo apt-get remove -y mawk
+	fi
 	sudo apt-get install -y "${PACKAGES[@]}"
-	echo "Remember to get 'bat' installed!"
 else
 	echo "Cannot find package manager"
 	exit 1
@@ -24,7 +27,8 @@ fi
 chsh -s "$(command -v zsh)"
 
 # Install zplug
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+export ZPLUG_HOME=~/.zplug
+git clone https://github.com/zplug/zplug $ZPLUG_HOME
 
 # Stow packages
 stow git systemd
